@@ -11,7 +11,7 @@ const site =
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
 
 const title = `${a.en} & ${b.en} 💍 ${a.ar} و${b.ar}`;
-const description = "You're invited to our engagement · Monday 7 December 2026 · Love Halls, Maadi — يسعدنا دعوتكم لحضور حفل خطوبتنا";
+const description = "You're invited to our engagement · Monday 7 December 2026 · Love Halls, Maadi ♡ يسعدنا دعوتكم لحضور حفل خطوبتنا";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["ar_EG"],
     // preview picture (public/og.jpg, 1200×630) — replace the file to change it
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: `${a.en} & ${b.en} — engagement invitation` }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: `${a.en} & ${b.en} · engagement invitation` }],
   },
   twitter: { card: "summary_large_image", title, description, images: ["/og.jpg"] },
 };
