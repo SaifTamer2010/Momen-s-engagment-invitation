@@ -1,0 +1,44 @@
+/* Styles for the React-only pieces (music button, seal burst). Template styles live in /public/theme. */
+
+@keyframes spin-cd { to { transform: rotate(360deg); } }
+@keyframes dance { 0%, 100% { transform: scaleY(.4); } 50% { transform: scaleY(1); } }
+
+/* ---- music button ---- */
+.inv-music { position: fixed; right: 16px; bottom: 56px; z-index: 40; opacity: 0; transform: scale(.6); pointer-events: none; transition: opacity .4s, transform .4s; }
+.inv-music.show { opacity: 1; transform: none; pointer-events: auto; }
+.inv-music button { position: relative; width: 48px; height: 48px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; background: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .2); transition: transform .2s; }
+.inv-music button:hover { transform: scale(1.1); }
+.inv-music button:active { transform: scale(.95); }
+.inv-cd { position: absolute; inset: 0; border-radius: 50%; animation: spin-cd 3s linear infinite; }
+.inv-cd i { position: absolute; inset: 4px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .2); }
+.inv-cd b { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(to top right, rgba(255, 255, 255, .3), transparent, transparent); }
+.inv-bars { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.inv-bars span { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
+.inv-bars em { width: 4px; background: #fff; border-radius: 9px; transform-origin: bottom; animation: dance .4s ease-in-out infinite; }
+.inv-music.paused .inv-cd, .inv-music.paused em { animation-play-state: paused; }
+
+/* ---- seal burst (keyframes particle-burst / seal-ring come from the template CSS) ---- */
+.inv-particle { position: absolute; pointer-events: none; z-index: 40; font-size: 14px; line-height: 1; text-shadow: 0 1px 3px rgba(0, 0, 0, .25); animation: particle-burst .9s cubic-bezier(.2, .7, .3, 1) forwards; }
+.inv-ring { position: absolute; pointer-events: none; border-radius: 50%; border: 2px solid; z-index: 29; animation: seal-ring .7s ease-out forwards; }
+
+/* ---- language toggle (top corner, above the envelope) ---- */
+.lang-toggle { position: fixed; top: 14px; right: 14px; z-index: 60; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid; border-radius: 999px; background: rgba(253, 251, 245, .88); backdrop-filter: blur(6px); font: 600 12px/1 Tajawal, Roboto, Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .12); transition: transform .2s; }
+.lang-toggle:hover { transform: scale(1.05); }
+.lang-toggle span { opacity: .45; transition: opacity .2s; }
+.lang-toggle span.on { opacity: 1; }
+.lang-toggle .sep { opacity: .3; }
+
+/* ---- Arabic: fonts + no letter-spacing (it breaks Arabic letter joining) ---- */
+html[lang="ar"] main *,
+html[lang="ar"] dialog *,
+html[lang="ar"] .fixed.inset-0 * { font-family: "Amiri", "Times New Roman", serif !important; letter-spacing: 0 !important; }
+html[lang="ar"] .names,
+html[lang="ar"] .names *,
+html[lang="ar"] .amp { font-family: "Aref Ruqaa", "Amiri", serif !important; text-transform: none !important; }
+html[lang="ar"] main input,
+html[lang="ar"] main textarea,
+html[lang="ar"] dialog input,
+html[lang="ar"] dialog textarea,
+html[lang="ar"] dialog select,
+html[lang="ar"] dialog label { font-family: "Tajawal", Arial, sans-serif !important; }
+html[lang="ar"] .fixed.inset-0 .seal-initials { font-family: "Alex Brush", cursive !important; }
