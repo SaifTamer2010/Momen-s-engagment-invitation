@@ -46,7 +46,7 @@ export const wedding = {
 
   // ---------- dress code ----------
   dressCode: {
-    title: { en: "Formal", ar: "رسمي" } as Tx,
+    title: { en: "Formal / Semi-formal", ar: "رسمي / شبه رسمي" } as Tx,
     note: { en: "We'd love to see you in the colors of our day", ar: "يسعدنا أن نراكم بألوان يومنا" } as Tx,
     colors: [
       { color: "#141414", name: { en: "Black", ar: "أسود" } },
