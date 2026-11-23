@@ -22,12 +22,19 @@ function DateBlock({ title, place, time }: { title: Tx; place: Tx; time: string 
       <p className="font-normal text-[14px] md:text-[15px] text-center uppercase" style={{ color: "#000" }}>
         {t(wedding.text.at)} {fmt(time)}
       </p>
-      <div className="flex items-center gap-6" style={{ color: BLUE }}>
-        <span className="text-[12px] md:text-[16px] uppercase tracking-[0.02em]" style={{ fontFamily: BASK }}>{date.weekday}</span>
+      {/* equal side columns keep the day number exactly centered */}
+      <div className="date-row" style={{ color: BLUE }}>
+        <span className="date-side text-[12px] md:text-[16px] uppercase tracking-[0.02em]" style={{ fontFamily: BASK, textAlign: "end" }}>
+          <span>{date.weekday}</span>
+          <span className="ghost" aria-hidden="true">{date.month}</span>
+        </span>
         <div className="h-[25px] w-[1px] md:h-[34px]" style={{ backgroundColor: "#000", opacity: 0.55 }} />
         <span className="text-[30px] md:text-[42px] leading-none" style={{ color: BLUE }}>{date.day}</span>
         <div className="h-[25px] w-[1px] md:h-[34px]" style={{ backgroundColor: "#000", opacity: 0.55 }} />
-        <span className="text-[12px] md:text-[16px] uppercase tracking-[0.02em]" style={{ fontFamily: BASK }}>{date.month}</span>
+        <span className="date-side text-[12px] md:text-[16px] uppercase tracking-[0.02em]" style={{ fontFamily: BASK, textAlign: "start" }}>
+          <span>{date.month}</span>
+          <span className="ghost" aria-hidden="true">{date.weekday}</span>
+        </span>
       </div>
       <div className="text-[17px] md:text-[23px]" style={{ fontFamily: CORM, color: "#000" }}>
         {date.year}
@@ -76,15 +83,19 @@ export default function CeremonyInfo() {
 
         <div className="relative w-full" style={{ marginTop: "calc(0.04082 * var(--st-w))" }}>
           <div className="names relative flex w-full min-w-0 flex-col items-center text-center gap-3 md:gap-4">
-            <h3 className="w-[80%] min-h-[80px] flex items-center justify-center leading-[48px] md:leading-[70px] whitespace-nowrap" style={{ fontSize: "43px", fontFamily: NAME, color: BLUE }}>
+            {/* sizes + spacing match the original: names 43px phone / 62px computer,
+                empty line under each name like the template (gives the same gap around "&") */}
+            <h3 className="ceremony-name w-[80%] min-h-[80px] flex items-center justify-center leading-[48px] md:leading-[70px] whitespace-nowrap" style={{ fontFamily: NAME, color: BLUE }}>
               {t(wedding.couple[0])}
             </h3>
+            <div className="uppercase text-[10px] md:text-[13px] tracking-[0.22em]" aria-hidden="true" />
             <div className="amp text-[35px] leading-none md:text-[48px]" style={{ color: BLUE, fontFamily: "\"Ms Madi\", \"Alex Brush\", cursive" }}>
               {amp}
             </div>
-            <h3 className="w-[80%] min-h-[80px] flex items-center justify-center leading-[48px] md:leading-[70px] whitespace-nowrap" style={{ fontSize: "43px", fontFamily: NAME, color: BLUE }}>
+            <h3 className="ceremony-name w-[80%] min-h-[80px] flex items-center justify-center leading-[48px] md:leading-[70px] whitespace-nowrap" style={{ fontFamily: NAME, color: BLUE }}>
               {t(wedding.couple[1])}
             </h3>
+            <div className="uppercase text-[10px] md:text-[13px] tracking-[0.22em]" aria-hidden="true" />
           </div>
         </div>
 

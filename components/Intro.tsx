@@ -191,11 +191,10 @@ export default function Intro() {
         </div>
         <div style={{ zIndex: "10", ...envelopeStyle }} className="jsx-353cb38c53e4a74a relative">
           <div className="jsx-353cb38c53e4a74a relative w-[310px] sm:w-[340px] md:w-[520px] lg:w-[600px]">
-          <div className="jsx-353cb38c53e4a74a absolute left-1/2 rounded-full flex items-center justify-center" style={{ top: "50px", width: "72px", height: "72px", transform: "translate(-50%, -50%)", background: "radial-gradient(circle at 30% 30%, #005885, rgb(0, 58, 103))", "--shadow-color": "rgba(0, 88, 133, 0.5)", boxShadow: "0 4px 20px rgba(0, 88, 133, 0.5), inset 0 2px 4px rgba(255,255,255,0.3)", zIndex: "30" , animation: sealAnimation } as React.CSSProperties}>
-            {/* wax seal initials (data/wedding.ts → sealInitials) */}
-            <span dir="ltr" className="seal-initials" style={{ color: "#fdfbf5", fontFamily: "\"Alex Brush\", cursive", fontSize: 12, lineHeight: 1, whiteSpace: "nowrap", textShadow: "0 1px 2px rgba(0,0,0,.25)" }}>
-              {wedding.sealInitials}
-            </span>
+          <div className="jsx-353cb38c53e4a74a absolute left-1/2 rounded-full flex items-center justify-center" style={{ top: "50px", width: "56px", height: "56px", transform: "translate(-50%, -50%)", background: "radial-gradient(circle at 30% 30%, #005885, rgb(0, 58, 103))", "--shadow-color": "rgba(0, 88, 133, 0.5)", boxShadow: "0 4px 20px rgba(0, 88, 133, 0.5), inset 0 2px 4px rgba(255,255,255,0.3)", zIndex: "30" , animation: sealAnimation } as React.CSSProperties}>
+            <svg style={{ fill: "#fdfbf5" }} viewBox="0 0 24 24" className="jsx-353cb38c53e4a74a w-7 h-7">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" className="jsx-353cb38c53e4a74a"></path>
+            </svg>
           </div>
           {burst && <SealBurst top={"50px"} />}
             <div style={{ boxShadow: "0 25px 60px -12px rgba(0, 0, 0, 0.45), 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 88, 133, 0.15)" }} className="jsx-353cb38c53e4a74a relative rounded-lg">
@@ -225,9 +224,7 @@ export default function Intro() {
                   <span dir="auto">
                     {date.long}
               </span>
-              <span className="text-[14px]" style={{ opacity: 0.7 }}>
-                {t(wedding.cityLine)}
-                  </span>
+              
                 </div>
                 <div className="jsx-353cb38c53e4a74a mb-6 max-w-[300px] md:max-w-[380px] lg:max-w-[440px] mx-auto">
                   <p style={{ color: "rgba(0, 0, 0, 0.82)", fontFamily: "\"Lora\", \"Times New Roman\", ChungDoiIndic, serif" }} className="jsx-353cb38c53e4a74a text-[18px] font-light mb-2">

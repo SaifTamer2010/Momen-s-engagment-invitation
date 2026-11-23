@@ -26,15 +26,15 @@ export default function Hero() {
         </div>
         <div className="names flex w-full flex-col items-center text-center leading-none" style={{ marginTop: "calc(0.18821 * var(--st-w))", fontFamily: "\"Viaoda Libre\", \"EB Garamond\", cursive", color: BLUE, textTransform: "uppercase" }}>
           <div className="flex w-[74%] justify-center">
-            <span className="whitespace-nowrap" style={{ fontSize: "30px", lineHeight: "1.22", paddingTop: "0.14em" }}>
+            <span className="hero-name whitespace-nowrap" style={{ lineHeight: "1.22", paddingTop: "0.14em" }}>
               {t(a)}
             </span>
           </div>
-          <span className="amp" style={{ fontFamily: "\"Alex Brush\", cursive", fontSize: "22px", lineHeight: "1", margin: "calc(0.01361 * var(--st-w)) 0" }}>
+          <span className="amp hero-amp" style={{ fontFamily: "\"Alex Brush\", cursive", lineHeight: "1", margin: "calc(0.01361 * var(--st-w)) 0" }}>
             {amp}
           </span>
           <div className="flex w-[74%] justify-center">
-            <span className="whitespace-nowrap" style={{ fontSize: "30px", lineHeight: "1.22", paddingTop: "0.14em" }}>
+            <span className="hero-name whitespace-nowrap" style={{ lineHeight: "1.22", paddingTop: "0.14em" }}>
               {t(b)}
             </span>
           </div>

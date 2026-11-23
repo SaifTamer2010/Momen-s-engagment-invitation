@@ -15,11 +15,33 @@
 .inv-bars { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .inv-bars span { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
 .inv-bars em { width: 4px; background: #fff; border-radius: 9px; transform-origin: bottom; animation: dance .4s ease-in-out infinite; }
-.inv-music.paused .inv-cd, .inv-music.paused em { animation-play-state: paused; }
+.inv-music.paused .inv-cd { animation: none; } /* stopped: CD stops spinning (like the original) */
 
 /* ---- seal burst (keyframes particle-burst / seal-ring come from the template CSS) ---- */
 .inv-particle { position: absolute; pointer-events: none; z-index: 40; font-size: 14px; line-height: 1; text-shadow: 0 1px 3px rgba(0, 0, 0, .25); animation: particle-burst .9s cubic-bezier(.2, .7, .3, 1) forwards; }
 .inv-ring { position: absolute; pointer-events: none; border-radius: 50%; border: 2px solid; z-index: 29; animation: seal-ring .7s ease-out forwards; }
+
+/* ---- names on the clouds (sizes from the original: phone 30/22px, computer 55/40px) ---- */
+.hero-name { font-size: 30px; }
+.hero-amp { font-size: 22px; }
+@media (min-width: 768px) {
+  .hero-name { font-size: 55px; }
+  .hero-amp { font-size: 40px; }
+}
+
+/* ---- big names in "Engagement info" (original: phone 43px, computer 62px) ---- */
+.ceremony-name { font-size: 43px; }
+@media (min-width: 768px) { .ceremony-name { font-size: 62px; } }
+
+/* ---- "MONDAY | 7 | DECEMBER": equal side columns so the day is exactly centered ---- */
+/* same look as the original (compact row, same gaps). Each side also holds an invisible copy of the
+   other word, so both sides are the width of the longer word and the day lands exactly in the middle */
+.date-row { display: flex; align-items: center; justify-content: center; gap: 24px; }
+.date-row.big { gap: 19px; }
+@media (min-width: 768px) { .date-row.big { gap: 28px; } }
+.date-side { display: grid; }
+.date-side > * { grid-area: 1 / 1; }
+.date-side .ghost { visibility: hidden; }
 
 /* ---- language toggle (top corner, above the envelope) ---- */
 .lang-toggle { position: fixed; top: 14px; right: 14px; z-index: 60; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid; border-radius: 999px; background: rgba(253, 251, 245, .88); backdrop-filter: blur(6px); font: 600 12px/1 Tajawal, Roboto, Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .12); transition: transform .2s; }
@@ -41,4 +63,3 @@ html[lang="ar"] dialog input,
 html[lang="ar"] dialog textarea,
 html[lang="ar"] dialog select,
 html[lang="ar"] dialog label { font-family: "Tajawal", Arial, sans-serif !important; }
-html[lang="ar"] .fixed.inset-0 .seal-initials { font-family: "Alex Brush", cursive !important; }

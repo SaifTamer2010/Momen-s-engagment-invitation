@@ -31,12 +31,19 @@ export default function ReceptionInfo() {
           <div className="text-[20px] md:text-[26px] mt-5" style={B600}>
             {time(wedding.ceremony.time)}
           </div>
-          <div className="flex items-center gap-[19px] md:gap-7" style={B600}>
-            <span className="text-[15px] md:text-[19px] uppercase" style={B600}>{date.weekday}</span>
+          {/* equal side columns keep the day number exactly centered */}
+          <div className="date-row big" style={B600}>
+            <span className="date-side text-[15px] md:text-[19px] uppercase" style={{ ...B600, textAlign: "end" }}>
+              <span>{date.weekday}</span>
+              <span className="ghost" aria-hidden="true">{date.month}</span>
+            </span>
             <div className="h-[28px] w-[1px] md:h-[38px]" style={{ backgroundColor: "#000", opacity: 0.55 }} />
             <span className="text-[34px] md:text-[46px] leading-none" style={{ ...B600, color: BLUE }}>{date.day}</span>
             <div className="h-[28px] w-[1px] md:h-[38px]" style={{ backgroundColor: "#000", opacity: 0.55 }} />
-            <span className="text-[15px] md:text-[19px] uppercase" style={B600}>{date.month}</span>
+            <span className="date-side text-[15px] md:text-[19px] uppercase" style={{ ...B600, textAlign: "start" }}>
+              <span>{date.month}</span>
+              <span className="ghost" aria-hidden="true">{date.weekday}</span>
+            </span>
           </div>
           <div className="text-[20px] md:text-[26px]" style={B600}>
             {date.year}

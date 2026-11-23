@@ -26,10 +26,11 @@ export function dateParts(l: Lang) {
 
 export const num = (n: number, l: Lang) => n.toLocaleString(locale(l), { useGrouping: false });
 
-/** "18:00" -> "6:00 PM" / "٦:٠٠ م" */
+/** "18:00" -> "18:00" / "١٨:٠٠" (24h) or "6:00 PM" / "٦:٠٠ م" (12h) — see timeFormat in data/wedding.ts */
 export function formatTime(hhmm: string, l: Lang) {
   const [h, m] = hhmm.split(":").map(Number);
-  return new Date(2000, 0, 1, h, m).toLocaleTimeString(locale(l), { hour: "numeric", minute: "2-digit" });
+  const h24 = wedding.timeFormat === "24h";
+  return new Date(2000, 0, 1, h, m).toLocaleTimeString(locale(l), h24 ? { hour: "2-digit", minute: "2-digit", hourCycle: "h23" } : { hour: "numeric", minute: "2-digit" });
 }
 
 /** Countdown target: party date at ceremony time, in the venue's time zone. */
@@ -50,7 +51,8 @@ export function calendarCells(): (number | null)[] {
 export const weddingDay = D;
 
 const venue = wedding.reception ?? wedding.ceremony;
-export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(venue.mapQuery)}&z=16&output=embed`;
+// name + exact pin → Google shows the real venue card (name, rating, "Open in Maps") at the right spot
+export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(venue.map.name)}&ll=${venue.map.lat},${venue.map.lng}&z=16&output=embed`;
 export const directionsUrl = venue.mapsLink;
 
 const stamp = (date: string, time: string) => date.replaceAll("-", "") + "T" + time.replace(":", "") + "00";

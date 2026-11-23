@@ -1,7 +1,7 @@
 // ============================================================
 //  EDIT YOUR ENGAGEMENT INVITATION HERE — every text on the page comes from this file.
 //  Texts have two versions: { en: "English", ar: "عربي" }.
-//  Times are 24h "HH:MM" (shown as 6:00 PM / ٦:٠٠ م automatically).
+//  Times are written 24h "HH:MM"; how they show depends on timeFormat below.
 // ============================================================
 
 export type Tx = { en: string; ar: string };
@@ -10,11 +10,9 @@ export const wedding = {
   // ---------- couple ----------
   /** names in the order they appear on the invitation */
   couple: [
-    { en: "Darin", ar: "دارين" }, // bride
     { en: "Momen", ar: "مؤمن" }, // groom
+    { en: "Darin", ar: "دارين" }, // bride
   ] as [Tx, Tx],
-  /** letters on the wax seal of the envelope */
-  sealInitials: "D & M",
   /** parents' names block — null hides it. Example:
    *  [{ title: {en:"Mr. & Mrs.",ar:"السيد والسيدة"}, names: [{en:"…",ar:"…"}] }, { …second family… }] */
   parents: null as null | [{ title: Tx; names: Tx[] }, { title: Tx; names: Tx[] }],
@@ -26,6 +24,8 @@ export const wedding = {
   timeZone: "Africa/Cairo",
   utcOffset: "+02:00", // Egypt in winter
   cityLine: { en: "Cairo, Egypt", ar: "القاهرة، مصر" } as Tx,
+  /** how times show on the page: "24h" = 18:00, "12h" = 6:00 PM */
+  timeFormat: "24h" as "24h" | "12h",
 
   ceremony: {
     title: { en: "ENGAGEMENT PARTY", ar: "حفل الخطوبة" } as Tx,
@@ -35,11 +35,11 @@ export const wedding = {
     endTime: "23:00", // for "Add to Calendar"
     /** link guests open for directions */
     mapsLink: "https://maps.app.goo.gl/3c2XEpHjgTvwKbcH9",
-    /** what the embedded map searches for (plus code = exact pin) */
-    mapQuery: "X6HJ+CX4 Love Halls, Dar El Salam, Cairo",
+    /** map on the page: place name + exact pin (lat/lng from the Google Maps link: the "!3d…!4d…" numbers) */
+    map: { name: "Love Halls", lat: 29.9785021, lng: 31.2324685 },
   },
   /** separate reception venue — null = same place as the ceremony */
-  reception: null as null | { title: Tx; place: Tx; address: Tx; time: string; mapsLink: string; mapQuery: string },
+  reception: null as null | { title: Tx; place: Tx; address: Tx; time: string; mapsLink: string; map: { name: string; lat: number; lng: number } },
 
   // ---------- RSVP ----------
   rsvp: { deadline: "2026-12-06" }, // last day to reply (venue time)
@@ -61,9 +61,46 @@ export const wedding = {
   schedule: [
     {
       time: "18:00",
-      title: { en: "We will make it an awesome day", ar: "يوم رائع بانتظارنا" },
-      note: { en: "We need you to join our mood", ar: "وجودكم يكمّل فرحتنا" },
+      title: { en: "Doors open", ar: "استقبال الضيوف" },
+      note: { en: "Welcome drinks & warm hugs", ar: "مشروبات ترحيب وأحضان دافية" },
+    },
+    {
+      time: "19:00",
+      title: { en: "The grand entrance", ar: "دخلة العرسان" },
+      note: { en: "The couple walks in — cheer as loud as you can!", ar: "العرسان داخلين… عايزين زغاريط!" },
       icon: "bird",
+    },
+    {
+      time: "19:30",
+      title: { en: "The rings", ar: "لبس الدبل والشبكة" },
+      note: { en: "Phones ready — this is the moment", ar: "جهّزوا الموبايلات، دي اللحظة!" },
+    },
+    {
+      time: "20:00",
+      title: { en: "Our first dance", ar: "الرقصة الأولى" },
+      note: { en: "Just the two of us… for one song", ar: "إحنا الاتنين بس… لأغنية واحدة" },
+    },
+    {
+      time: "20:15",
+      title: { en: "The dance floor opens", ar: "الدانس فلور مفتوح" },
+      note: { en: "Everybody is committed to dance!", ar: "والجميع ملتزم بالرقص!" },
+      icon: "gate",
+    },
+    {
+      time: "21:30",
+      title: { en: "Dinner", ar: "العشاء" },
+      note: { en: "Refuel for round two", ar: "شحن طاقة للجولة التانية" },
+    },
+    {
+      time: "22:15",
+      title: { en: "Cake & photos", ar: "تقطيع التورتة والصور" },
+      note: { en: "Come take a picture with us", ar: "تعالوا اتصوروا معانا" },
+    },
+    {
+      time: "23:00",
+      title: { en: "Last dance & goodbyes", ar: "الرقصة الأخيرة والوداع" },
+      note: { en: "Thank you for making our night beautiful", ar: "شكراً إنكم خليتوا ليلتنا أحلى" },
+      icon: "fountain",
     },
   ] as { time: string; title: Tx; note?: Tx; icon?: "bird" | "gate" | "fountain" }[],
 
@@ -73,7 +110,7 @@ export const wedding = {
     introLine: { en: "Cordially invite you", ar: "يتشرفان بدعوتكم" },
     open: { en: "Open", ar: "افتح الدعوة" },
     invite: { en: "Together with our families\nwe invite you to our engagement", ar: "مع عائلتينا\nيسعدنا دعوتكم لحضور حفل خطوبتنا" },
-    ceremonyHeading: { en: "PARTY INFO", ar: "تفاصيل الحفل" },
+    ceremonyHeading: { en: "ENGAGEMENT INFO", ar: "تفاصيل الحفل" },
     at: { en: "AT", ar: "الساعة" },
     galleryHeading: { en: "Photo Gallery", ar: "ألبوم الصور" },
     bigDayHeading: { en: "THE BIG DAY", ar: "اليوم الموعود" },
@@ -86,6 +123,8 @@ export const wedding = {
     rsvpClosed: { en: "RSVP is closed", ar: "انتهى موعد تأكيد الحضور" },
     venueHeading: { en: "Party Venue", ar: "مكان الحفل" },
     directions: { en: "Get directions", ar: "الاتجاهات على الخريطة" },
+    copyAddress: { en: "Copy address", ar: "نسخ العنوان" },
+    copied: { en: "Copied ✓", ar: "تم النسخ ✓" },
     dressCodeHeading: { en: "DRESS CODE", ar: "الدريس كود" },
     scheduleHeading: { en: "ENGAGEMENT SCHEDULE", ar: "برنامج الحفل" },
     guestbookHeading: { en: "Guestbook", ar: "دفتر التهاني" },

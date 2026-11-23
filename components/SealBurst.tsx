@@ -28,7 +28,7 @@ export default function SealBurst({ top, count = 16 }: { top: string; count?: nu
 
   return (
     <>
-      <div className="inv-ring" style={{ left: "50%", top, width: 72, height: 72, borderColor: wedding.theme }} />
+      <div className="inv-ring" style={{ left: "50%", top, width: 56, height: 56, borderColor: wedding.theme }} />
       {particles.map((p, i) => (
         <span
           key={i}
