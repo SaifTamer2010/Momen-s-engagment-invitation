@@ -6,7 +6,7 @@ import AutoScroll from "@/components/AutoScroll";
 import Guestbook from "@/components/Guestbook";
 import Hero from "@/components/sections/Hero";
 import CeremonyInfo from "@/components/sections/CeremonyInfo";
-import Gallery from "@/components/sections/Gallery";
+// import Gallery from "@/components/sections/Gallery"; // photo gallery — turned off for now
 import Divider from "@/components/sections/Divider";
 import ReceptionInfo from "@/components/sections/ReceptionInfo";
 import Rsvp from "@/components/sections/Rsvp";
@@ -24,7 +24,7 @@ export default function Page() {
       <Shell>
         <Hero />
         <CeremonyInfo />
-        <Gallery />
+        {/* <Gallery /> */}
         <Divider />
         <ReceptionInfo />
         <Rsvp />

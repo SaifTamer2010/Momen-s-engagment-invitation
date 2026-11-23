@@ -3,9 +3,32 @@ import "./invitation.css";
 import { wedding } from "@/data/wedding";
 
 const [a, b] = wedding.couple;
+
+// Site address, so WhatsApp gets a full link to the preview picture.
+// Vercel fills VERCEL_PROJECT_PRODUCTION_URL by itself; set NEXT_PUBLIC_SITE_URL if you use your own domain.
+const site =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+
+const title = `${a.en} & ${b.en} 💍 ${a.ar} و${b.ar}`;
+const description = "You're invited to our engagement · Monday 7 December 2026 · Love Halls, Maadi — يسعدنا دعوتكم لحضور حفل خطوبتنا";
+
 export const metadata: Metadata = {
-  title: `${a.en} & ${b.en} · ${a.ar} و${b.ar}`,
-  description: `You're invited to the engagement of ${a.en} & ${b.en} — ${wedding.cityLine.en}`,
+  metadataBase: new URL(site),
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: `${a.en} & ${b.en}`,
+    title,
+    description,
+    locale: "en_US",
+    alternateLocale: ["ar_EG"],
+    // preview picture (public/og.jpg, 1200×630) — replace the file to change it
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: `${a.en} & ${b.en} — engagement invitation` }],
+  },
+  twitter: { card: "summary_large_image", title, description, images: ["/og.jpg"] },
 };
 
 export const viewport: Viewport = {
