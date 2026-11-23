@@ -43,6 +43,18 @@
 .date-side > * { grid-area: 1 / 1; }
 .date-side .ghost { visibility: hidden; }
 
+/* ---- quotes (where the schedule was) ---- */
+.quotes { list-style: none; margin: 16px auto 0; padding: 0; max-width: 460px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.quotes li { display: flex; flex-direction: column; align-items: center; }
+.quotes .quote-mark { font: 400 44px/0.6 "Alex Brush", cursive; color: rgb(0, 88, 133); opacity: .5; height: 22px; }
+.quotes p { font: italic 15px/1.55 "EB Garamond", "Times New Roman", serif; color: #000; margin: 0; }
+.quotes .quote-heart { color: rgb(0, 88, 133); opacity: .45; font-size: 14px; margin: 14px 0 10px; }
+@media (min-width: 768px) {
+  .quotes .quote-mark { font-size: 58px; height: 28px; }
+  .quotes p { font-size: 19px; }
+}
+html[lang="ar"] .quotes p { font-style: normal; line-height: 1.8; }
+
 /* ---- language toggle (top corner, above the envelope) ---- */
 .lang-toggle { position: fixed; top: 14px; right: 14px; z-index: 60; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid; border-radius: 999px; background: rgba(253, 251, 245, .88); backdrop-filter: blur(6px); font: 600 12px/1 Tajawal, Roboto, Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .12); transition: transform .2s; }
 .lang-toggle:hover { transform: scale(1.05); }

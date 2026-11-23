@@ -13,6 +13,7 @@ import Rsvp from "@/components/sections/Rsvp";
 import Venue from "@/components/sections/Venue";
 import DressCode from "@/components/sections/DressCode";
 import Schedule from "@/components/sections/Schedule";
+import Quotes from "@/components/sections/Quotes";
 import Footer from "@/components/sections/Footer";
 import LangToggle from "@/components/LangToggle";
 import { LangProvider } from "@/lib/i18n";
@@ -31,6 +32,7 @@ export default function Page() {
         <Venue />
         <DressCode />
         <Schedule />
+        <Quotes />
         <Guestbook />
         <Footer />
       </Shell>

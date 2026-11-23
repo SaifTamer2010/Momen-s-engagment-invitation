@@ -25,7 +25,7 @@ export const wedding = {
   utcOffset: "+02:00", // Egypt in winter
   cityLine: { en: "Cairo, Egypt", ar: "القاهرة، مصر" } as Tx,
   /** how times show on the page: "24h" = 18:00, "12h" = 6:00 PM */
-  timeFormat: "24h" as "24h" | "12h",
+  timeFormat: "12h" as "24h" | "12h",
 
   ceremony: {
     title: { en: "ENGAGEMENT PARTY", ar: "حفل الخطوبة" } as Tx,
@@ -61,48 +61,18 @@ export const wedding = {
   schedule: [
     {
       time: "18:00",
-      title: { en: "Doors open", ar: "استقبال الضيوف" },
-      note: { en: "Welcome drinks & warm hugs", ar: "مشروبات ترحيب وأحضان دافية" },
-    },
-    {
-      time: "19:00",
-      title: { en: "The grand entrance", ar: "دخلة العرسان" },
-      note: { en: "The couple walks in — cheer as loud as you can!", ar: "العرسان داخلين… عايزين زغاريط!" },
-      icon: "bird",
-    },
-    {
-      time: "19:30",
-      title: { en: "The rings", ar: "لبس الدبل والشبكة" },
-      note: { en: "Phones ready — this is the moment", ar: "جهّزوا الموبايلات، دي اللحظة!" },
-    },
-    {
-      time: "20:00",
-      title: { en: "Our first dance", ar: "الرقصة الأولى" },
-      note: { en: "Just the two of us… for one song", ar: "إحنا الاتنين بس… لأغنية واحدة" },
-    },
-    {
-      time: "20:15",
-      title: { en: "The dance floor opens", ar: "الدانس فلور مفتوح" },
-      note: { en: "Everybody is committed to dance!", ar: "والجميع ملتزم بالرقص!" },
-      icon: "gate",
-    },
-    {
-      time: "21:30",
-      title: { en: "Dinner", ar: "العشاء" },
-      note: { en: "Refuel for round two", ar: "شحن طاقة للجولة التانية" },
-    },
-    {
-      time: "22:15",
-      title: { en: "Cake & photos", ar: "تقطيع التورتة والصور" },
-      note: { en: "Come take a picture with us", ar: "تعالوا اتصوروا معانا" },
-    },
-    {
-      time: "23:00",
-      title: { en: "Last dance & goodbyes", ar: "الرقصة الأخيرة والوداع" },
-      note: { en: "Thank you for making our night beautiful", ar: "شكراً إنكم خليتوا ليلتنا أحلى" },
-      icon: "fountain",
+      title: { en: "The engagement begins", ar: "بداية حفل الخطوبة" },
+      note: { en: "Don't be late — we're not starting without you!", ar: "متتأخروش… مش هنبدأ من غيركم!" },
     },
   ] as { time: string; title: Tx; note?: Tx; icon?: "bird" | "gate" | "fountain" }[],
+
+  // ---------- quotes (shown instead of the schedule) ----------
+  quotes: [
+    { en: "Our happiness is only complete when you are there to share it.", ar: "فرحتنا مش هتكمل غير بوجودكم معانا." },
+    { en: "We found each other — now we want to celebrate it with the people we love most.", ar: "لقينا بعض… ودلوقتي عايزين نفرح بده مع أغلى الناس علينا." },
+    { en: "Come laugh with us, dance with us, and make this night unforgettable.", ar: "تعالوا اضحكوا معانا، ارقصوا معانا، وخلّوا الليلة دي متتنسيش." },
+    { en: "Every love story is beautiful, but ours is better with you in it.", ar: "كل قصة حب حلوة… بس قصتنا أحلى وإنتم فيها." },
+  ] as Tx[],
 
   // ---------- wording ----------
   text: {
@@ -127,6 +97,7 @@ export const wedding = {
     copied: { en: "Copied ✓", ar: "تم النسخ ✓" },
     dressCodeHeading: { en: "DRESS CODE", ar: "الدريس كود" },
     scheduleHeading: { en: "ENGAGEMENT SCHEDULE", ar: "برنامج الحفل" },
+    quotesHeading: { en: "FROM OUR HEARTS", ar: "من قلوبنا" },
     guestbookHeading: { en: "Guestbook", ar: "دفتر التهاني" },
     footer: { en: "Your presence would be the greatest gift we could receive!", ar: "حضوركم هو أجمل هدية لنا!" },
   } satisfies Record<string, Tx>,
