@@ -122,6 +122,7 @@ export const wedding = {
     sendWish: { en: "SEND WISHES", ar: "أرسل التهنئة" },
     wishThanks: { en: "Thank you for your wishes! ♡", ar: "شكراً على تهنئتكم! ♡" },
     wishEmpty: { en: "Be the first to leave a wish ♡", ar: "كن أول من يكتب تهنئة ♡" },
+    wishLoading: { en: "Loading wishes… ♡", ar: "جارٍ تحميل التهاني… ♡" },
     magic: { en: "Suggest a wish", ar: "اقترح تهنئة" },
   } satisfies Record<string, Tx>,
 

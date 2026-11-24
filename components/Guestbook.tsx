@@ -20,12 +20,26 @@ export default function Guestbook() {
   const [message, setMessage] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  // true while the wishes are coming from the sheet (so we don't flash "Be the first…")
+  const [loading, setLoading] = useState(sheetConnected());
   const fmtDate = (w: Entry) => (w.at ? new Date(w.at).toLocaleString(lang === "ar" ? "ar-EG" : "en-US", { dateStyle: "medium", timeStyle: "short" }) : w.date);
 
   useEffect(() => {
-    loadWishes().then((rows) => {
-      if (rows) setWishes(rows.map((r) => ({ name: r.name, message: r.message, date: "", at: new Date(r.time).getTime() })));
-    });
+    let alive = true;
+    const load = () =>
+      loadWishes().then((rows) => {
+        if (!alive) return;
+        if (rows) setWishes(rows.map((r) => ({ name: r.name, message: r.message, date: "", at: new Date(r.time).getTime() })));
+        setLoading(false);
+      });
+    load();
+    // fetch again when the guest comes back to the tab (new wishes from others)
+    const onVisible = () => document.visibilityState === "visible" && load();
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      alive = false;
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, []);
 
   const send = async (e: React.FormEvent) => {
@@ -76,7 +90,7 @@ export default function Guestbook() {
           </form>
           <div className="mt-8 w-full space-y-3 mx-auto max-w-full md:max-w-[600px]">
             {wishes.length === 0 && (
-              <p className="text-center text-sm" style={{ color: BLUE, opacity: 0.8, fontFamily: SERIF }}>{t(f.wishEmpty)}</p>
+              <p className="text-center text-sm" style={{ color: BLUE, opacity: 0.8, fontFamily: SERIF }}>{t(loading ? f.wishLoading : f.wishEmpty)}</p>
             )}
             {wishes.map((w, i) => (
               <div key={i} className="rounded-xl border p-4 text-sm" style={{ borderColor: "rgba(0, 88, 133, 0.2)", backgroundColor: "rgba(255, 255, 255, 0.667)" }}>
